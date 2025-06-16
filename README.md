@@ -1,4 +1,4 @@
-## river
+## river-api-server
 
 river の API サーバーのリポジトリです。
 user 情報等の API を提供します。
