@@ -35,5 +35,5 @@ class RegisterRequest extends FormRequest
             'email' => 'メールアドレス',
             'password' => 'パスワード',
             ];
-        }
+    }
 }
