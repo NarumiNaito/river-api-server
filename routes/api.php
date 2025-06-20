@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\WaterLevelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:user')->group(function () {
     Route::prefix('/user')->name('profile.')->group(function() {
-    Route::get('/', [AuthController::class,'user'])->name('user');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-});
+        Route::get('/', [AuthController::class,'user'])->name('user');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    });
+    Route::prefix('/user-water-level')->name('water.')->group(function() {
+        Route::get('/fetch', [WaterLevelController::class, 'fetch'])->name('fetch');
+        Route::post('setting', [WaterLevelController::class, 'setting'])->name('setting');
+    });  
 });
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
